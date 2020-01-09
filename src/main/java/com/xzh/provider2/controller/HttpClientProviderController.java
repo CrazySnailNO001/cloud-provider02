@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/jdk_http_client")
-public class JdkHttpClinetController {
+public class HttpClientProviderController {
 
     @GetMapping("/getTest")
     public String getTest(@RequestParam(required = false) String name) {
@@ -23,6 +23,11 @@ public class JdkHttpClinetController {
     @PostMapping(value = "/postJsonTest", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public String postJsonTest(@RequestBody UserRequestDto userRequestDto) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            System.out.println("Exception...");
+        }
         return "这是服务提供者2，postJsonTest,参数 name：" + userRequestDto.getName() + ", age :" + userRequestDto.getAge();
     }
 
