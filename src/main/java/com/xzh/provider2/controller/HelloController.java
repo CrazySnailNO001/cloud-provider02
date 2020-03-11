@@ -1,6 +1,5 @@
 package com.xzh.provider2.controller;
 
-import com.xzh.provider2.dto.UserRequestDto;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -19,8 +18,8 @@ public class HelloController {
 
     @PostMapping("/hello")
     @ResponseBody
-    public String ribbonPost(@RequestBody UserRequestDto userRequestDto) {
-        return "这是服务提供者2，post请求,参数：" + userRequestDto.getName();
+    public String ribbonPost(@RequestBody String name) {
+        return "这是服务提供者1，post请求,参数：" + name;
     }
 
 }
