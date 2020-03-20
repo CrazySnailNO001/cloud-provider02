@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 public class HelloController {
     @GetMapping("/hello")
     public String index(@RequestParam(required = false) String name) throws InterruptedException {
-//        Thread.sleep(8000);
+        Thread.sleep(60);
+        System.out.println("=========");
+
         return "这是服务提供者2，参数：" + name;
     }
 
