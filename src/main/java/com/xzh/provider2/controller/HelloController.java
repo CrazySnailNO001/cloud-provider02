@@ -1,5 +1,6 @@
 package com.xzh.provider2.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -9,19 +10,22 @@ import org.springframework.web.bind.annotation.*;
  * @modify By:
  **/
 @RestController
+@Slf4j
 public class HelloController {
     @GetMapping("/hello")
     public String index(@RequestParam(required = false) String name) throws InterruptedException {
-        Thread.sleep(60);
-        System.out.println("=========");
+//        Thread.sleep(60);
 
-        return "这是服务提供者2，参数：" + name;
+        String response = "这是provider-service2，参数：" + name;
+        log.info("[Hello World API] response : {}", response);
+
+        return response;
     }
 
     @PostMapping("/hello")
     @ResponseBody
     public String ribbonPost(@RequestBody String name) {
-        return "这是服务提供者1，post请求,参数：" + name;
+        return "这是服务提供者2，post请求,参数：" + name;
     }
 
 }
